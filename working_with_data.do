@@ -8,3 +8,10 @@ regress price mpg weight
 
 scatter mpg weight
 
+describe
+
+describe make
+
+codebook make
+
+codebook mpg
