@@ -1,0 +1,21 @@
+{smcl}
+{txt}{sf}{ul off}{.-}
+      name:  {res}<unnamed>
+       {txt}log:  {res}C:\Users\MSI\OneDrive\Desktop\intern\learn_stata\myses2.smcl
+  {txt}log type:  {res}smcl
+ {txt}opened on:  {res} 6 Oct 2026, 12:50:37
+{txt}
+{com}. 
+. use visits1
+{txt}
+{com}. 
+{txt}end of do-file
+
+{com}. do "C:\Users\MSI\AppData\Local\Temp\STD3a84_000018.tmp"
+{txt}
+{com}. use visits2
+{txt}
+{com}. 
+{txt}end of do-file
+
+{com}. 

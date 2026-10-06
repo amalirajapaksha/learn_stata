@@ -1,0 +1,336 @@
+{smcl}
+{com}{sf}{ul off}{txt}{.-}
+      name:  {res}<unnamed>
+       {txt}log:  {res}C:\Users\MSI\OneDrive\Desktop\intern\learn_stata\myses.smcl
+  {txt}log type:  {res}smcl
+ {txt}opened on:  {res} 6 Oct 2026, 12:21:41
+{txt}
+{com}. 
+. sysuse auto.dta
+{txt}(1978 automobile data)
+
+{com}. 
+. list mpg weight if mpg>20 in 1/10
+{txt}
+     {c TLC}{hline 5}{c -}{hline 8}{c TRC}
+     {c |} {res}mpg   weight {txt}{c |}
+     {c LT}{hline 5}{c -}{hline 8}{c RT}
+  1. {c |} {res} 22    2,930 {txt}{c |}
+  3. {c |} {res} 22    2,640 {txt}{c |}
+  7. {c |} {res} 26    2,230 {txt}{c |}
+     {c BLC}{hline 5}{c -}{hline 8}{c BRC}
+
+{com}. 
+. regress price mpg weight
+
+{txt}      Source {c |}       SS           df       MS      Number of obs   ={res}        74
+{txt}{hline 13}{c +}{hline 34}   F(2, 71)        = {res}    14.74
+{txt}       Model {c |} {res}  186321280         2  93160639.9   {txt}Prob > F        ={res}    0.0000
+{txt}    Residual {c |} {res}  448744116        71  6320339.67   {txt}R-squared       ={res}    0.2934
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}    0.2735
+{txt}       Total {c |} {res}  635065396        73  8699525.97   {txt}Root MSE        =   {res}   2514
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}       price{col 14}{c |} Coefficient{col 26}  Std. err.{col 38}      t{col 46}   P>|t|{col 54}     [95% con{col 67}f. interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 9}mpg {c |}{col 14}{res}{space 2}-49.51222{col 26}{space 2} 86.15604{col 37}{space 1}   -0.57{col 46}{space 3}0.567{col 54}{space 4}-221.3025{col 67}{space 3}  122.278
+{txt}{space 6}weight {c |}{col 14}{res}{space 2} 1.746559{col 26}{space 2} .6413538{col 37}{space 1}    2.72{col 46}{space 3}0.008{col 54}{space 4}  .467736{col 67}{space 3} 3.025382
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2} 1946.069{col 26}{space 2}  3597.05{col 37}{space 1}    0.54{col 46}{space 3}0.590{col 54}{space 4}-5226.245{col 67}{space 3} 9118.382
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}{txt}
+{com}. 
+. scatter mpg weight
+{res}{txt}
+{com}. 
+. describe
+
+{txt}Contains data from {res}C:\Program Files\StataNow19\ado\base/a/auto.dta
+{txt} Observations:{res}            74                  1978 automobile data
+{txt}    Variables:{res}            12                  13 Apr 2024 17:45
+                                              (_dta has notes)
+{txt}{hline}
+Variable      Storage   Display    Value
+    name         type    format    label      Variable label
+{hline}
+{p 0 48}{res}{bind:make           }{txt}{bind: str18   }{bind:%-18s     }{space 1}{bind:         }{bind:  }{res}{res}Make and model{p_end}
+{p 0 48}{bind:price          }{txt}{bind: int     }{bind:%8.0gc    }{space 1}{bind:         }{bind:  }{res}{res}Price{p_end}
+{p 0 48}{bind:mpg            }{txt}{bind: int     }{bind:%8.0g     }{space 1}{bind:         }{bind:  }{res}{res}Mileage (mpg){p_end}
+{p 0 48}{bind:rep78          }{txt}{bind: int     }{bind:%8.0g     }{space 1}{bind:         }{bind:  }{res}{res}Repair record 1978{p_end}
+{p 0 48}{bind:headroom       }{txt}{bind: float   }{bind:%6.1f     }{space 1}{bind:         }{bind:  }{res}{res}Headroom (in.){p_end}
+{p 0 48}{bind:trunk          }{txt}{bind: int     }{bind:%8.0g     }{space 1}{bind:         }{bind:  }{res}{res}Trunk space (cu. ft.){p_end}
+{p 0 48}{bind:weight         }{txt}{bind: int     }{bind:%8.0gc    }{space 1}{bind:         }{bind:  }{res}{res}Weight (lbs.){p_end}
+{p 0 48}{bind:length         }{txt}{bind: int     }{bind:%8.0g     }{space 1}{bind:         }{bind:  }{res}{res}Length (in.){p_end}
+{p 0 48}{bind:turn           }{txt}{bind: int     }{bind:%8.0g     }{space 1}{bind:         }{bind:  }{res}{res}Turn circle (ft.){p_end}
+{p 0 48}{bind:displacement   }{txt}{bind: int     }{bind:%8.0g     }{space 1}{bind:         }{bind:  }{res}{res}Displacement (cu. in.){p_end}
+{p 0 48}{bind:gear_ratio     }{txt}{bind: float   }{bind:%6.2f     }{space 1}{bind:         }{bind:  }{res}{res}Gear ratio{p_end}
+{p 0 48}{bind:foreign        }{txt}{bind: byte    }{bind:%8.0g     }{space 1}{bind:origin   }{bind:  }{res}{res}Car origin{p_end}
+{txt}{hline}
+Sorted by: {res}foreign
+{txt}
+{com}. 
+. describe make
+
+{txt}Variable      Storage   Display    Value
+    name         type    format    label      Variable label
+{hline}
+{p 0 48}{res}{bind:make           }{txt}{bind: str18   }{bind:%-18s     }{space 1}{bind:         }{bind:  }{res}{res}Make and model{p_end}
+{txt}
+{com}. 
+. codebook make
+
+{txt}{hline}
+{res}make{right:Make and model}
+{txt}{hline}
+
+{col 19}Type: String ({res}str18{txt}), but longest is str17
+
+{col 10}Unique values: {res}74{col 51}{txt}Missing "": {res}0{txt}/{res}74
+
+{txt}{col 15}Examples: {res}"Cad. Deville"
+{col 25}"Dodge Magnum"
+{col 25}"Merc. XR-7"
+{col 25}"Pont. Catalina"
+
+{txt}{col 16}Warning: Variable has embedded blanks.
+
+{com}. 
+. codebook mpg
+
+{txt}{hline}
+{res}mpg{right:Mileage (mpg)}
+{txt}{hline}
+
+{col 19}Type: Numeric ({res}int{txt})
+
+{col 18}Range: [{res}12{txt},{res}41{txt}]{col 55}Units: {res}1
+{col 10}{txt}Unique values: {res}21{col 51}{txt}Missing .: {res}0{txt}/{res}74
+
+{txt}{col 19}Mean: {res}{ralign 7:21.2973}
+{txt}{col 14}Std. dev.: {res}{ralign 7:5.7855}
+
+{txt}{col 12}Percentiles: {col 25}{ralign 7:10%}{ralign 10:25%}{ralign 10:50%}{ralign 10:75%}{ralign 10:90%}
+{res}{col 25}{ralign 7:14}{ralign 10:      18}{ralign 10:      20}{ralign 10:      25}{ralign 10:      29}
+{txt}
+{com}. 
+. tabulate foreign
+
+ {txt}Car origin {c |}      Freq.     Percent        Cum.
+{hline 12}{c +}{hline 35}
+   Domestic {c |}{res}         52       70.27       70.27
+{txt}    Foreign {c |}{res}         22       29.73      100.00
+{txt}{hline 12}{c +}{hline 35}
+      Total {c |}{res}         74      100.00
+{txt}
+{com}. 
+. * list make mpg if foreign=="Foreign"
+. 
+. list make mpg if foreign==1
+{txt}
+     {c TLC}{hline 16}{c -}{hline 5}{c TRC}
+     {c |} {res}make             mpg {txt}{c |}
+     {c LT}{hline 16}{c -}{hline 5}{c RT}
+ 53. {c |} {res}Audi 5000         17 {txt}{c |}
+ 54. {c |} {res}Audi Fox          23 {txt}{c |}
+ 55. {c |} {res}BMW 320i          25 {txt}{c |}
+ 56. {c |} {res}Datsun 200        23 {txt}{c |}
+ 57. {c |} {res}Datsun 210        35 {txt}{c |}
+     {c LT}{hline 16}{c -}{hline 5}{c RT}
+ 58. {c |} {res}Datsun 510        24 {txt}{c |}
+ 59. {c |} {res}Datsun 810        21 {txt}{c |}
+ 60. {c |} {res}Fiat Strada       21 {txt}{c |}
+ 61. {c |} {res}Honda Accord      25 {txt}{c |}
+ 62. {c |} {res}Honda Civic       28 {txt}{c |}
+     {c LT}{hline 16}{c -}{hline 5}{c RT}
+ 63. {c |} {res}Mazda GLC         30 {txt}{c |}
+ 64. {c |} {res}Peugeot 604       14 {txt}{c |}
+ 65. {c |} {res}Renault Le Car    26 {txt}{c |}
+ 66. {c |} {res}Subaru            35 {txt}{c |}
+ 67. {c |} {res}Toyota Celica     18 {txt}{c |}
+     {c LT}{hline 16}{c -}{hline 5}{c RT}
+ 68. {c |} {res}Toyota Corolla    31 {txt}{c |}
+ 69. {c |} {res}Toyota Corona     18 {txt}{c |}
+ 70. {c |} {res}VW Dasher         23 {txt}{c |}
+ 71. {c |} {res}VW Diesel         41 {txt}{c |}
+ 72. {c |} {res}VW Rabbit         25 {txt}{c |}
+     {c LT}{hline 16}{c -}{hline 5}{c RT}
+ 73. {c |} {res}VW Scirocco       25 {txt}{c |}
+ 74. {c |} {res}Volvo 260         17 {txt}{c |}
+     {c BLC}{hline 16}{c -}{hline 5}{c BRC}
+
+{com}. 
+. list make mpg if foreign == "Foreign":origin
+{txt}
+     {c TLC}{hline 16}{c -}{hline 5}{c TRC}
+     {c |} {res}make             mpg {txt}{c |}
+     {c LT}{hline 16}{c -}{hline 5}{c RT}
+ 53. {c |} {res}Audi 5000         17 {txt}{c |}
+ 54. {c |} {res}Audi Fox          23 {txt}{c |}
+ 55. {c |} {res}BMW 320i          25 {txt}{c |}
+ 56. {c |} {res}Datsun 200        23 {txt}{c |}
+ 57. {c |} {res}Datsun 210        35 {txt}{c |}
+     {c LT}{hline 16}{c -}{hline 5}{c RT}
+ 58. {c |} {res}Datsun 510        24 {txt}{c |}
+ 59. {c |} {res}Datsun 810        21 {txt}{c |}
+ 60. {c |} {res}Fiat Strada       21 {txt}{c |}
+ 61. {c |} {res}Honda Accord      25 {txt}{c |}
+ 62. {c |} {res}Honda Civic       28 {txt}{c |}
+     {c LT}{hline 16}{c -}{hline 5}{c RT}
+ 63. {c |} {res}Mazda GLC         30 {txt}{c |}
+ 64. {c |} {res}Peugeot 604       14 {txt}{c |}
+ 65. {c |} {res}Renault Le Car    26 {txt}{c |}
+ 66. {c |} {res}Subaru            35 {txt}{c |}
+ 67. {c |} {res}Toyota Celica     18 {txt}{c |}
+     {c LT}{hline 16}{c -}{hline 5}{c RT}
+ 68. {c |} {res}Toyota Corolla    31 {txt}{c |}
+ 69. {c |} {res}Toyota Corona     18 {txt}{c |}
+ 70. {c |} {res}VW Dasher         23 {txt}{c |}
+ 71. {c |} {res}VW Diesel         41 {txt}{c |}
+ 72. {c |} {res}VW Rabbit         25 {txt}{c |}
+     {c LT}{hline 16}{c -}{hline 5}{c RT}
+ 73. {c |} {res}VW Scirocco       25 {txt}{c |}
+ 74. {c |} {res}Volvo 260         17 {txt}{c |}
+     {c BLC}{hline 16}{c -}{hline 5}{c BRC}
+
+{com}. 
+. sysuse auto, clear
+{txt}(1978 automobile data)
+
+{com}. 
+. note: TS obtained from official Stata directory
+{res}{txt}
+{com}. 
+. notes
+{res}
+_dta:
+{txt}{p 2 6}
+1.
+From Consumer Reports with permission
+{p_end}
+{p 2 6}
+2.
+6 Oct 2026 12:21 obtained from official Stata directory
+{p_end}
+
+{com}. 
+. notes drop _dta in 2
+{res}{txt}  (1 note dropped)
+
+{com}. 
+. notes
+{res}
+_dta:
+{txt}{p 2 6}
+1.
+From Consumer Reports with permission
+{p_end}
+
+{com}. 
+. label var make "This is the new name"
+{txt}
+{com}. 
+. describe make
+
+{txt}Variable      Storage   Display    Value
+    name         type    format    label      Variable label
+{hline}
+{p 0 48}{res}{bind:make           }{txt}{bind: str18   }{bind:%-18s     }{space 1}{bind:         }{bind:  }{res}{res}This is the new name{p_end}
+{txt}
+{com}. 
+. label var make
+{txt}
+{com}. 
+. describe
+
+{txt}Contains data from {res}C:\Program Files\StataNow19\ado\base/a/auto.dta
+{txt} Observations:{res}            74                  1978 automobile data
+{txt}    Variables:{res}            12                  13 Apr 2024 17:45
+                                              (_dta has notes)
+{txt}{hline}
+Variable      Storage   Display    Value
+    name         type    format    label      Variable label
+{hline}
+{p 0 48}{res}{bind:make           }{txt}{bind: str18   }{bind:%-18s     }{space 1}{bind:         }{bind:  }{res}{res}{p_end}
+{p 0 48}{bind:price          }{txt}{bind: int     }{bind:%8.0gc    }{space 1}{bind:         }{bind:  }{res}{res}Price{p_end}
+{p 0 48}{bind:mpg            }{txt}{bind: int     }{bind:%8.0g     }{space 1}{bind:         }{bind:  }{res}{res}Mileage (mpg){p_end}
+{p 0 48}{bind:rep78          }{txt}{bind: int     }{bind:%8.0g     }{space 1}{bind:         }{bind:  }{res}{res}Repair record 1978{p_end}
+{p 0 48}{bind:headroom       }{txt}{bind: float   }{bind:%6.1f     }{space 1}{bind:         }{bind:  }{res}{res}Headroom (in.){p_end}
+{p 0 48}{bind:trunk          }{txt}{bind: int     }{bind:%8.0g     }{space 1}{bind:         }{bind:  }{res}{res}Trunk space (cu. ft.){p_end}
+{p 0 48}{bind:weight         }{txt}{bind: int     }{bind:%8.0gc    }{space 1}{bind:         }{bind:  }{res}{res}Weight (lbs.){p_end}
+{p 0 48}{bind:length         }{txt}{bind: int     }{bind:%8.0g     }{space 1}{bind:         }{bind:  }{res}{res}Length (in.){p_end}
+{p 0 48}{bind:turn           }{txt}{bind: int     }{bind:%8.0g     }{space 1}{bind:         }{bind:  }{res}{res}Turn circle (ft.){p_end}
+{p 0 48}{bind:displacement   }{txt}{bind: int     }{bind:%8.0g     }{space 1}{bind:         }{bind:  }{res}{res}Displacement (cu. in.){p_end}
+{p 0 48}{bind:gear_ratio     }{txt}{bind: float   }{bind:%6.2f     }{space 1}{bind:         }{bind:  }{res}{res}Gear ratio{p_end}
+{p 0 48}{bind:foreign        }{txt}{bind: byte    }{bind:%8.0g     }{space 1}{bind:origin   }{bind:  }{res}{res}Car origin{p_end}
+{txt}{hline}
+Sorted by: {res}foreign
+{txt}     Note: {res}Dataset has changed since last saved.
+{txt}
+{com}. 
+. note rep78: 1=poor, ..., 5=excellent
+{res}{txt}
+{com}. 
+. notes
+{res}
+_dta:
+{txt}{p 2 6}
+1.
+From Consumer Reports with permission
+{p_end}
+
+{res}rep78:
+{txt}{p 2 6}
+1.
+1=poor, ..., 5=excellent
+{p_end}
+
+{com}. 
+. save auto, replace
+{txt}{p 0 4 2}
+file {bf}
+auto.dta{rm}
+saved
+{p_end}
+
+{com}. 
+. tabulate rep78
+
+     {txt}Repair {c |}
+record 1978 {c |}      Freq.     Percent        Cum.
+{hline 12}{c +}{hline 35}
+          1 {c |}{res}          2        2.90        2.90
+{txt}          2 {c |}{res}          8       11.59       14.49
+{txt}          3 {c |}{res}         30       43.48       57.97
+{txt}          4 {c |}{res}         18       26.09       84.06
+{txt}          5 {c |}{res}         11       15.94      100.00
+{txt}{hline 12}{c +}{hline 35}
+      Total {c |}{res}         69      100.00
+{txt}
+{com}. 
+. label define rep 1 poor 2 fair 3 average 4 good 5 excellent
+{txt}
+{com}. 
+. label values rep78 rep
+{txt}
+{com}. 
+. tabulate rep78
+
+     {txt}Repair {c |}
+record 1978 {c |}      Freq.     Percent        Cum.
+{hline 12}{c +}{hline 35}
+       poor {c |}{res}          2        2.90        2.90
+{txt}       fair {c |}{res}          8       11.59       14.49
+{txt}    average {c |}{res}         30       43.48       57.97
+{txt}       good {c |}{res}         18       26.09       84.06
+{txt}  excellent {c |}{res}         11       15.94      100.00
+{txt}{hline 12}{c +}{hline 35}
+      Total {c |}{res}         69      100.00
+{txt}
+{com}. 
+. log close
+      {txt}name:  {res}<unnamed>
+       {txt}log:  {res}C:\Users\MSI\OneDrive\Desktop\intern\learn_stata\myses.smcl
+  {txt}log type:  {res}smcl
+ {txt}closed on:  {res} 6 Oct 2026, 12:21:44
+{txt}{.-}
+{smcl}
+{txt}{sf}{ul off}
